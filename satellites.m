@@ -1,5 +1,5 @@
 %Input
-T=[90 100 110 120 130]; %in minutes
+T= input("minutes"); 
 %Define the constants:radius of Earth,graviational constant,mass of Earth
 R=6.371E6;
 G=6.67E-11;
@@ -9,7 +9,10 @@ T=T*60;
 h=((G*M*T^2)/(4*pi^2))^(1/3)-R; %in meters
 %Convert h to kilometers
 h=h/1000;
-%New R is the radius of Earth and the height of the satellite
+%New R is the radius of Earth plus the height of the satellite
 R=R+h;
 %Calculating the velocity of a satellite at a given period
-v=(2*pi*R)/T
+v=(2*pi*R)/T;
+round(v)
+round(h)
+
