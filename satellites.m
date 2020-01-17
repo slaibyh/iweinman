@@ -13,6 +13,6 @@ h=h/1000;
 R=R+h;
 %Calculating the velocity of a satellite at a given period
 v=(2*pi*R)/T;
-round(v)
-round(h)
+disp(round(v))
+disp(round(h))
 
