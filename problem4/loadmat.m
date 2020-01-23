@@ -23,7 +23,7 @@ numel(I);
 
 %3)
 %Define a variable for all elements that were discovered before 1900
-y=discyear<1900
+y=discyear<1900;
 %Find which elements were discovered before 1900
 Y=find(y);
 %Display the names of the elements defined by "Y"
@@ -31,5 +31,5 @@ names(Y);
 %Count all the element in "Y"
 numel(Y);
 
-plot(atomicweight,density);
+plot(atomicweight,density)
 
