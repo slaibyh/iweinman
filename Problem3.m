@@ -1,3 +1,4 @@
+%1)
 v=[3,-2,5,7,-3];
 u=[5,3,-1,-1,9];
 A =[-3,-3,-4,-9,-8;-6,7,5,-9,1;-5,2,5,1,-1;2,1,-3,6,-10;-1,9,1,9,-3];
@@ -48,6 +49,7 @@ A*v'; %This takes the sum of the products of each element in the first
 %       61
 %       56
 
+%2)
 A^2; % WHY???
 % ans = 
 %       37  -101    -4   -76   139
@@ -64,6 +66,7 @@ A.^2; %This squares each element in "A".
 %       4     1     9    36   100
 %       1    81     1    81     9
 
-sym n
-s=(sqrt(12))*(symsum((-3)^(-n)/((2*n)+1),n,0,50)) 
-%"symsum" taken from https://www.mathworks.com/help/symbolic/symsum.html
+%3)
+n=[0:100];
+sum((sqrt(12))*(-3).^(-n)./((2.*n)+1));
+%This converges to 3.1416 or approximately pi.
