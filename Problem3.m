@@ -64,6 +64,6 @@ A.^2; %This squares each element in "A".
 %       4     1     9    36   100
 %       1    81     1    81     9
 
-n=[0:10];
-s= (sqrt(12))*(symsum((-3)^(-n)/(2n+1),n,0,Inf) 
+sym n
+s=(sqrt(12))*(symsum((-3)^(-n)/((2*n)+1),n,0,50)) 
 %"symsum" taken from https://www.mathworks.com/help/symbolic/symsum.html
