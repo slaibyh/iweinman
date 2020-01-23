@@ -9,7 +9,7 @@ D=find(d);
 %Display the names of the elements defined by "D"
 names(D);
 %Count all the elements in "D"
-numel(n);
+numel(D);
 
 %2)
 %Define a variable for all elements with over 100 isotopes
@@ -31,5 +31,5 @@ names(Y);
 %Count all the element in "Y"
 numel(Y);
 
-plot(atomicweight,density)
+plot(atomicweight,density);
 
