@@ -28,7 +28,7 @@ y=discyear<1900;
 Y=find(y);
 %Display the names of the elements defined by "Y"
 names(Y);
-%Count all the element in "Y"
+%Count all the elements in "Y"
 numel(Y);
 
 plot(atomicweight,density);
