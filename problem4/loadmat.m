@@ -31,5 +31,8 @@ names(Y);
 %Count all the elements in "Y"
 numel(Y);
 
+%4)
 plot(atomicweight,density);
+%There does not appear to be a clear relationship between atomic weight and
+%density. 
 
