@@ -8,6 +8,7 @@ SPTS = table2struct(SPT);
 %1)
 %Define a variable for all the elements that are more dense than mercury and have less than 30 isotopes
 DM = SPT.Element(SPT.Density > SPT.Density(80) & SPT.Isotopes < 30);
+%Count the elements in 'DM' and put them in alphabetical order
 numel(DM);
 sort(DM);
 %'sort' command taken from https://www.mathworks.com/matlabcentral/answers/910-is-there-a-method-to-sort-a-list-an-array-of-words-alphabetically-natural-order-sorting
