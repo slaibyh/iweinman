@@ -20,7 +20,7 @@ v'*u; % The apostrophe turns "v" into a colum vector. The first row is the first
 %       35    21    -7    -7    63
 %      -15    -9     3     3   -27. 
 
-u/v; % WHY????
+u/v; % Since there is no solution to this equation Matlab finds the least squares.
 % ans = -0.3125.
 
 u./v; %This divides each element by each element.
