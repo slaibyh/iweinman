@@ -32,7 +32,7 @@ names(Y);
 numel(Y);
 
 %4)
-plot(atomicweight,density);
+p = plot(atomicweight,density);
 %There does not appear to be a clear relationship between atomic weight and
 %density. 
 
