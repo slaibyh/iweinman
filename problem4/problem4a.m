@@ -21,7 +21,7 @@ Sym = SPT.Symbol((SPT.DiscYear >= 1900 & SPT.DiscYear < 2000));
 
 %3)
 %Rearrange SPT to be in denscedning order of amount of isotopes
-RSPT = sortrows(SPT, 6, 'descend');
+RSPT = sortrows(SPT, 6, 'descend'); %sortrows taken from 'doc sortrows'
 %Define a variable for the first 10 elements in the new table
 TopTen = RSPT.Element(1:10);
 
