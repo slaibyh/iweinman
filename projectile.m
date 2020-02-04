@@ -1,1 +1,1 @@
-function [vi,la] = projectile(r,ft)
+function [v,a] = projectile(r,t)
