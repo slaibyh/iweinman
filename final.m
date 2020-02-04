@@ -1,2 +1,1 @@
-%Track my location on a typical school day. Display my location of everyday
-%on a map of campus on top of each other
+%Track my location everyday that we have class. Put the path I walk from everyday I recorded on a map of campus. 
