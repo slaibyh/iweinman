@@ -64,4 +64,4 @@ save('climate.mat');
 
 %6)
 %save 'climate.m' as a .txt file
-save('climate.txt')
+save('climate.txt');
