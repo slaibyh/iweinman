@@ -42,6 +42,7 @@ x = GlobTempByYear.Year(1:168);
 laxis = NewTable.AvgTemp;
 yyaxis left
 plot(x,laxis);
+figure () 
 errorbar(x, laxis, NewTable.lowerbound, NewTable.upperbound);
 
 raxis = NewTable.CumSum;
@@ -55,8 +56,12 @@ yyaxis right
 ylabel('Cumsum');
 
 %4iii)
-%create a scatter plot of NewTable.AvgTemp vs NewTable.CumSum'
-ScatterPlot = scatter(NewTable.CumSum, NewTable.AvgTemp); %when I run this it looks like Matlab is combining plot 2 and 3. How do I get Matlab to show 'ScatterPlot' by itself?
+%create a scatter plot of NewTable.AvgTemp vs NewTable.CumSum
+figure ()
+ScatterPlot = scatter(NewTable.CumSum, NewTable.AvgTemp); 
+title('Scatterplot of AvgTemp vs CumSum')
+ylabel('AvgTemp')
+xlabel('CumSum')
 
 %5)
 %save 'climate.m' as a .mat file
