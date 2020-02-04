@@ -4,6 +4,9 @@ T = input("minutes");
 R = 6.371E6; 
 G = 6.67E-11;
 M = 5.98E24;
+if ~isnumeric(T)
+    error('Must enter a number')
+end
 %Convert to seconds
 T = T*60;
 h = ((G*M*T^2)/(4*pi^2))^(1/3)-R; %in meters
@@ -15,4 +18,3 @@ R = R+h;
 v = (2*pi*R)/T;
 disp(round(v))
 disp(round(h))
-
