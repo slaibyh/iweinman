@@ -1,5 +1,5 @@
 %Input
-T = input("minutes"); 
+T = input("minutes",'s'); 
 if ~isnumeric(T)
     error('Enter a number')
 end
@@ -18,3 +18,6 @@ R = R+h;
 v = (2*pi*R)/T;
 disp(round(v))
 disp(round(h))
+if round(h)<0
+    error('Orbit is underground!')
+end
