@@ -22,11 +22,11 @@ else
     end
 end
 
-r = iv*cosd(la)*(iv*sind(la)+sqrt(iv*sind(la)+2*g*h))/g
-t = (iv*sind(la) + sqrt((iv*sind(la))^2+2*g*h))/g
+r = iv*cosd(la)*(iv*sind(la)+sqrt(iv*sind(la)+2*g*h))/g;
+t = 2*(iv*sind(la) + sqrt((iv*sind(la))^2+2*g*h))/g;
 
 
-stepsize = t/100;
+stepsize = t/1000;
 time = [0:stepsize:t];
 xaxis = iv*cosd(la)*time;
 yaxis = h + iv*time-.5*g*time.^2;
