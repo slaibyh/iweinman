@@ -9,3 +9,6 @@ Problem 4/4a look excellent, short and concise. The only problem you have is sto
 
 ## Feb 9
 The climate program is running but there is something definitely wrong with your cumulative sum of carbon emissions. You need to dissect line 11 in that program. You are using an `&` in a function - do some testing to figure out what happens to the inputs when connected by this logical operator.
+
+## Feb 18
+I still see the same problems with the problem 4's that I specified above. Looking at the new satellite program that takes units, it works and splits the units correctly, however, I now see where the problem is with your velocity - take a look at line 40 and ask yourself what this is actually calculating and why this is actually much too slow a velocity. I think there's still some major issues with your projectile motion - I would double check your calculations on line 25/26 - there is an error - and then also think more about line 31-32, these expressions worked under some assumptions, but not in this new context of varying height.
