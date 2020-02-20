@@ -3,7 +3,6 @@ function [r,t] = projectile(iv,la,h)
 %arguments it takes are initial velocity (in m/s or mph), launch angle (in
 %degrees), and height (in meters). It calculates the range and the time
 %spent in the air. Lastly, it will plot the trajectory of the projectile.
-%The two outputs are the distance traveled by the projectile and time lapsed traveling that distance.
 %Define the gravitational constant. We will use this as acceleration
 g = 9.81;
 
@@ -13,7 +12,7 @@ if nargin == 0
     la = 30;
     h = 0;
 elseif nargin == 1
-    la = 40;
+    la = 30;
     h = 0;
 elseif nargin == 2
     h = 0;
