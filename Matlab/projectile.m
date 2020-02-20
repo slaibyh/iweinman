@@ -1,5 +1,8 @@
 function [r,t] = projectile(iv,la,h)
-%This function has three default inputs: initial velocity (m/s or mph) and initial launch angle (degrees).
+%PROJECTILE can be run with 0-3 arguments. The three possible
+%arguments it takes are initial velocity (in m/s or mph), launch angle (in
+%degrees), and height (in meters). It calculates the range and the time
+%spent in the air. Lastly, it will plot the trajectory of the projectile.
 %The two outputs are the distance traveled by the projectile and time lapsed traveling that distance.
 %Define the gravitational constant. We will use this as acceleration
 g = 9.81;
@@ -30,12 +33,17 @@ switch units
     case 'm/s'
         iv = iv;
     case 'mph'
-        iv = iv/2.237 %conversion factor taken from Google
+        iv = iv/2.237; %conversion factor taken from Google
 end
 
 %Since we made iv a string we need to define a variable for the numeric part of it
 ivspeed = splitiv{1};
 speed = str2num(ivspeed);
+
+%Make sure the input for intital velocity is a number
+if isempty(speed)
+    error('Please input a numeric value for velocity')
+end
 
 %Equations for range and time
 r = speed*cosd(la)*(speed*sind(la)+sqrt(speed*sind(la)+2*g*h))/g;
