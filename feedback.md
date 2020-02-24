@@ -12,3 +12,6 @@ The climate program is running but there is something definitely wrong with your
 
 ## Feb 18
 I still see the same problems with the problem 4's that I specified above. Looking at the new satellite program that takes units, it works and splits the units correctly, however, I now see where the problem is with your velocity - take a look at line 40 and ask yourself what this is actually calculating and why this is actually much too slow a velocity. I think there's still some major issues with your projectile motion - I would double check your calculations on line 25/26 - there is an error - and then also think more about line 31-32, these expressions worked under some assumptions, but not in this new context of varying height.
+
+## Feb 24
+Problem 6 looks good. Projectile is still having some issues with projectile - you're over shooting the time by a lot. I would double check the time calculation - also, I would avoid using split to incorporate units into this program, I would just take units as a separate argument.
