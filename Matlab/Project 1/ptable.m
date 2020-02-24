@@ -1,18 +1,19 @@
 function [varargout] = ptable(varargin)
 % PTABLE Takes 0-2 arguments. 0 arguments will result in 2 outputs: One will be a 
-%graph with 2 lines: mass (calculated by the Semi-Empircial formula) vs atomic number 
-%and mass (calculated from the atomic weight) vs atomic number. 
-%The other will be a graph of binding energy per nucleon vs atomic number.
-%1 numeric argument (atomic number) will result in 2 outputs: One is the
-%mass of the element (calculated by the Semi-Empircial formula). The other
-%is a structure or table containing all the info about that element.
+%graph with a line of mass (calculated by 'massformula') vs atomic number 
+%and markers of mass (calculated from the atomic weight) vs atomic number. 
+%The other will be a graph of binding energy per nucleon (calculated by 
+%'massformula') vs atomic number.%1 numeric argument (atomic number) will result
+%in 2 outputs: One is the mass of the element (calculated by 'massformula'). 
+%The other is a table containing all the info about that element. 
 %2 numeric arguments (atomic number and total number of nucleons) will
 %result in two outputs: One is the mass of the isotope (calculated by the
-%Semi-Empircial formula). The other is whether it is stable.
+%Semi-Empircial formula). The other is whether or not %the isotope is stable. 
 %1 numeric  argument (atomic number) and 1 character argument (the name of
-%a field/column in the .csv file) will result in 2 outputs. One will be the
+%a column in 'table') will result in 2 outputs. One will be the
 %mass of the element (calculated by the Semi-Empircial formula). The other
-%will be the value within that field (which itself could be numeric, char, or string)
+%will be the value in the row of the atomic number that is input and the
+%column that is specified.
 
 %Import 'periodictabledata.csv'
 table = readtable('periodictabledata.csv');
@@ -25,8 +26,8 @@ if nargin == 0
        
        figure(1)
        hold on%We need a hold becuase we are doing 2 plots in 1
-       plot(Z,mass, 'k-')
-       plot(Z,awm, 'ro')
+       plot(Z,mass, 'k-')%black line
+       plot(Z,awm, 'ro')%red circles
        title('Mass vs. Atomic Number')
        xlabel('Atomic Number')
        ylabel('Mass (MeV)')
@@ -34,13 +35,13 @@ if nargin == 0
        hold off
        
        figure(2)
-       plot(A,BEPN(:,end))
+       plot(Z,BEPN)%why are there two lines?
        title('Binding Energy per Nucleon vs. Atomic Number')
        xlabel('Atomic Number')
        ylabel('BEPN (MeV)')
        
 elseif nargin == 1
-        singlearg = cell2mat(varargin);%turn varargin into a matrix so we can work with it
+        singlearg = varargin{1};
         if ~isnumeric(singlearg)%check that the input is numeric
             error('Please input a numeric value for Atomic Number')
         end
@@ -49,7 +50,7 @@ elseif nargin == 1
         end
         Z = singlearg;
         %Define a variable for the row of the input
-        R = find(table.AtomicNumber==singlearg);
+        R = find(table.AtomicNumber==Z);
         %Define a variable for the Atomic Weight in the row of the input
         A = table.AtomicWeight(R);
         
@@ -57,48 +58,53 @@ elseif nargin == 1
         [mass] = massformula(A,Z);
         
         %Create a new table that is just the row of the input
-        newtable = table(singlearg,:);
+        newtable = table(Z,:);
         
-        %Display the mass and newtable of the input
+        %Display the mass and 'newtable'
         disp("Mass = " +mass+ " MeV")
         disp(newtable)
         
-elseif nargin == 2
-        arg1 = cell2mat(varargin(1));
-        arg2 = cell2mat(varargin(2));
-       if ~isnumeric(arg1)%Check that the first input is numeric
-           error('Please input a numeric value for atomic number')
-       elseif ~isnumeric(arg2)%Check that the second input is numeric
-           error('Please input a numeric value for number of nucleons')
-       end
+elseif nargin == 2 
+        if isnumeric(varargin{2})
+       %if both arguments are numeric do this:
+        arg1 = varargin{1};
+        arg2 = varargin{2};
+        if ~isnumeric(arg1)%Check that the first input is numeric
+            error('Please input a numeric value for atomic number')
+        end
+        if ~isnumeric(arg2)%Check that the second input is numeric
+            error('Please input a numeric value for number of nucleons')
+        end
        
-       %Define variables for A and Z
-       Z = arg1;
-       A = arg2;
-       
-       [mass, be] = massformula(A,Z);
-       disp("Mass = "+mass+" MeV")
-       if be <= 0
-           error('Isotope is unstable')
-       else 
-           disp('Isotope is stable!')
-       end
-       
-else
-        arg1 = cell2mat(varargin(1));
-        arg2 = varargin(2);
-         if ~isnumeric(arg1)%Check that the first input is numeric
-           error('Please input a numeric value for atomic number')
-         end
-         
-         Z = arg1;
-         preA = find(table.AtomicNumber==arg1);
-         A = table.AtomicWeight(preA);
-         [mass] = massformula(A,Z);
-         
+        %Define variables for A and Z
+        Z = arg1;
+        A = arg2;
+   
+        %Calculate mass and determine stability of the isotope
+        [mass, be] = massformula(A,Z);
+        disp("Mass = "+mass+" MeV")
+        if be <= 0
+           disp('Isotope is unstable :(')
+        else 
+           disp('Isotope is stable :)')
+        end
+        end
+        if ischar(varargin{2})
+        %if one argument is numeric and one argument is a char do this: 
+        numarg = varargin{1};
+        chararg = varargin{2};
+  
+        %calculate mass
+        Z = numarg;
+        R = find(table.AtomicNumber==Z);
+        A = table.AtomicWeight(R);
+        [mass, be] = massformula(A,Z);
+        
+        %display corresponding cell that is in specified column and display mass
+        disp("Mass = "+mass+" MeV")
+        disp(table(Z,chararg))
+        end    
 end
-
-
 end
 
 function [mass, be, BEPN] = massformula(A,Z)
