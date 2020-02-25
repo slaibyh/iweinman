@@ -8,7 +8,7 @@ GlobTempByYear.Properties.VariableNames = {'Year' 'AvgTemp' '3' '4' '5' '6' '7' 
 
 %2)
 %Use 'cumsum' to find the cumulative sum of 'GCB2' and 'GCB3'
-CumSum = cumsum(GlobCarbBud.ffai(101:268) & GlobCarbBud.luce(101:268)); % should 'CumSum' be equal to 1-168?
+CumSum = cumsum(GlobCarbBud.ffai(101:268) + GlobCarbBud.luce(101:268)); 
 
 %3)
 %Create a new table for with fossil fuel and industry emissions, land-use change emissions, the cumulative sum of carbon emissions, the average global temperature, and the lower and upper bounds of the 95% confidence interval of the combined effects
