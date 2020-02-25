@@ -37,11 +37,11 @@ end
 
 %Calculate orbital height and velocity
 h = round((((G*M*T.^2)/(4*pi^2)).^(1/3)-R)./1000); %in kilometers
-v = round((2*pi*R)/T)/1000; %in kilometers/second
+v = round(sqrt((G*M)/h)); %in kilometers/second
 
 %Display the orbital height and velocity
-disp(h);
-disp(v);
+disp("Height = "+h+" km");
+disp("Velocity = "+v+"km/s");
 
 %Check if 'h' is less than 0 aka below the surface of Earth. If it is, ask for another input
 if h <= 0
