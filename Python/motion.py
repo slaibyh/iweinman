@@ -4,19 +4,37 @@ Starting point for Problem 6a
 """
 #Import necessary packages
 import numpy as np
-#import matplotlib as mpl
 import math as m
+import matplotlib.pyplot as p
 
-def projectile(v=15,ang=30,h=0,g=9.81):
+def projectile(v=15,ang=30,h=0,g=9.8):
     
     #convert the default angle (in degrees) to radians
-    rada=aconversion(ang,'degrees')
+    rada=aconversion(ang,"degrees")
+    
+    #assign variables for components of velocity
+    vx=v*np.cos(rada)
+    vy=v*np.sin(rada)
         
-    #calculate all the outputs. Formulas taken from https://courses.lumenlearning.com/boundless-physics/chapter/projectile-motion/
-    r=v**2*np.sin(2*rada)/g
-    tf=2*v*np.sin(rada)/g
-    hmax=h+(v**2*(np.sin(rada)**2))/(2*g)
+    #calculate outputs
+    r=vx*(vy+m.sqrt(vy**2+2*g*h))/g
+    tf=(vy+m.sqrt(vy**2+2*g*h))/g
+    hmax=h+((vy**2)/(2*g))
+    
+    #plot the trajectory of the projectile
+    t=np.arange(0,tf,0.01)
+    d=2*(vx*t)
+    he=h+(vy*t+(.5*g*t**2))
+    graph(he,d)
+    
     return r,tf,hmax  
+
+    #Function for graphing the trajectory of the projectile
+def graph(x,y):
+    p.plot(x,y)
+    p.xlabel('Distance (meters)')
+    p.ylabel('Height (meters)')
+    return
 
 
 def freefall(h=100,v=0,g=9.81):
@@ -38,10 +56,6 @@ def dconversion(distance,unit):
         print('Please input a number for distance with proper units')       
     return d,units
 
-#Function for graphing the trajectory of the projectile
-#def graph()
- #   plot()
-  #  return
 
 #Function for converting between m/s, ft/s, mph (all conversion factors taken from Google)
 def vconversion(velocity,unit,newunit):
@@ -76,10 +90,8 @@ def vconversion(velocity,unit,newunit):
 def aconversion(angle,unit):
     if unit=="degrees":
         a=m.radians(angle)
-        units="radians"
     elif unit=="radians":
         a=m.degrees(angle)
-        units="degrees"
     else:
         print('Please input an angle with proper units')
-    return a,units
+    return a
