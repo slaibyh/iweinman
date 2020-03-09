@@ -15,3 +15,6 @@ I still see the same problems with the problem 4's that I specified above. Looki
 
 ## Feb 24
 Problem 6 looks good. Projectile is still having some issues with projectile - you're over shooting the time by a lot. I would double check the time calculation - also, I would avoid using split to incorporate units into this program, I would just take units as a separate argument.
+
+## Mar 9
+You have a solid start on the projectile motion problem in python, but there are a few problems. 1) The program `projectile` works for the initial h of zero, but not for any other height. 2) You have a big problem with what your conversion programs are returning to `projectile` to use in the `sin` function on line 16 and 17 of that program. 3) and don't forget to use a jupyter notebook to call this function when you're done. 
