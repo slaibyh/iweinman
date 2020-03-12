@@ -34,8 +34,6 @@ switch units
         iv = iv/2.237; %conversion factor taken from Google
 end
 
-
-
 %Equations for range and time
 r = iv^2*sind(2*la)/g;
 t = 2*(2*iv*sind(la))/g;
