@@ -23,9 +23,9 @@ def projectile(v=15,ang=30,h=0,g=9.8):
     
     #plot the trajectory of the projectile
     t=np.arange(0,tf,0.01)
-    d=2*(vx*t)
+    d=(vx*t)
     he=h+(vy*t+(.5*g*t**2))
-    graph(he,d)
+    graph(d,he)
     
     return r,tf,hmax  
 
@@ -34,6 +34,7 @@ def graph(x,y):
     p.plot(x,y)
     p.xlabel('Distance (meters)')
     p.ylabel('Height (meters)')
+    p.title('Height vs. Dsitance')
     return
 
 
