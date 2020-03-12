@@ -7,7 +7,8 @@
 %but not on Tuesdays, I should have half as many points at my calc and physics 
 %locations than our class' location.  At first I paused the tracking when I went 
 %inside, but lately I have left it running the whole day. I can make graphs of 
-%the total time of the "workout" and the calories I burned because it tracks those two. 
+%the total time of the "workout", the calories I burned, and the total distance
+%because the app I use tracks all three.  
 
 %Now that we are switching to online classes I'm not sure how much walking
 %around campus I will be doing, so I'm not sure if this idea will work so
@@ -21,16 +22,17 @@
 %make an arrow coming out of the satellite that shows its velocity 
 
 A = imread('space.jpg');
-B = imshow(A);
+figure(1)
+examplesat = imshow(A);
 
-%In my head I'm picturing something like 'B', except the satellite would be
+%In my head I'm picturing something like 'examplesat', except the satellite would be
 %going around the earth in a circle instead of going in front of it. For an
 %extra challenge I could try animating it so that the satellite actually
 %moves around the earth at the calculated velocity (to scale, obviously). 
 
+%Creating the Earth
 
-
-
-
-
-
+%radius of Earth taken from Google
+R = 6.371E6;
+figure(2) 
+Earth = rectangle('Position',[0 0 R R],'Curvature',[1 1]);%why is this not making a perfect cirlce?
