@@ -24,7 +24,7 @@ def projectile(v=15,ang=30,h=0,g=9.8):
     #plot the trajectory of the projectile
     t=np.arange(0,tf,0.01)
     d=(vx*t)
-    he=h+(vy*t+(.5*g*t**2))
+    he=h+(vy*t-(.5*g*t**2))
     graph(d,he)
     
     return r,tf,hmax  
