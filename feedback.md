@@ -20,3 +20,6 @@ Problem 6 looks good. Projectile is still having some issues with projectile - y
 You have a solid start on the projectile motion problem in python, but there are a few problems. 1) The program `projectile` works for the initial h of zero, but not for any other height. 2) You have a big problem with what your conversion programs are returning to `projectile` to use in the `sin` function on line 16 and 17 of that program. 3) and don't forget to use a jupyter notebook to call this function when you're done. 
 ## Mar 16
 I think that you ironed out the issues in the projectile function, now you just need to use a jupyter notebook to call the function.
+
+## Mar 23
+I looked over proble 7a and it seems that you are getting correct answers. One thing that you should do, though, is include `show()` statement in your graph function, in jupyter notebooks, you get a graph, but in spyder you do not, including a show() makes sure that it appears in both. I took a quick look through your `ptable` function, and while it runs and seems to calculate values correct, You still have a problem with the binding energy graph looks like two graphs, but I don't know what the second line is. Also, you have no output arguments assigned, you output the mass, BUT it is only printed to the command window and is not stored as an output argument.
