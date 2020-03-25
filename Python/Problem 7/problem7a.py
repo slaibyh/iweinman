@@ -12,7 +12,7 @@ climate['YearlyEmissions'] = climate.ffai+climate.luce
 climate['Year'] = Years
 
 
-#1 and 2) This function returns the hottest ten years or the 10 years with the most carbon based on the input
+#1 and 2) This function returns the hottest ten years or the ten years with the most carbon based on the input
 def topten(str):
     if str == 'Years':
         sortedclimate = climate.sort_values('AvgTemp',ascending=False)
