@@ -3,16 +3,16 @@ function [varargout] = ptable(varargin)
 %graph with a line of mass (calculated by 'massformula') vs atomic number 
 %and markers of mass (calculated from the atomic weight) vs atomic number. 
 %The other will be a graph of binding energy per nucleon (calculated by 
-%'massformula') vs atomic number.%1 numeric argument (atomic number) will result
+%'massformula') vs atomic number. 1 numeric argument (atomic number) will result
 %in 2 outputs: One is the mass of the element (calculated by 'massformula'). 
 %The other is a table containing all the info about that element. 
 %2 numeric arguments (atomic number and total number of nucleons) will
 %result in two outputs: One is the mass of the isotope (calculated by the
-%Semi-Empircial formula). The other is whether or not %the isotope is stable. 
+%Semi-Empircial formula). The other is whether or not the isotope is stable. 
 %1 numeric  argument (atomic number) and 1 character argument (the name of
-%a column in 'table') will result in 2 outputs. One will be the
+%a column in 'table') will result in 2 outputs: One will be the
 %mass of the element (calculated by the Semi-Empircial formula). The other
-%will be the value in the row of the atomic number that is input and the
+%will be the cell in the row of the atomic number that is input and the
 %column that is specified.
 
 %Import 'periodictabledata.csv'
@@ -24,7 +24,7 @@ if nargin == 0
         awm = A*931.5; %mass calculated from atomic weight
        [mass, be, BEPN] = massformula(A,Z);
        
-       figure(1)
+       plot1 = figure(1);
        hold on%We need a hold becuase we are doing 2 plots in 1
        plot(Z,mass, 'k-')%black line
        plot(Z,awm, 'ro')%red circles
@@ -34,7 +34,7 @@ if nargin == 0
        legend('Line = Semi-Empirical Formula Mass vs. Atomic Number', 'Markers = Atomic Weight Mass vs. Atomic Number')
        hold off
        
-       figure(2)
+       plot2 = figure(2);
        plot(Z,BEPN)%why are there two lines?
        title('Binding Energy per Nucleon vs. Atomic Number')
        xlabel('Atomic Number')
@@ -61,8 +61,8 @@ elseif nargin == 1
         newtable = table(Z,:);
         
         %Display the mass and 'newtable'
-        disp("Mass = " +mass+ " MeV")
-        disp(newtable)
+        disp("Mass = " +mass+ " MeV");
+        disp(newtable);
         
 elseif nargin == 2 
         if isnumeric(varargin{2})
@@ -89,6 +89,7 @@ elseif nargin == 2
            disp('Isotope is stable :)')
         end
         end
+        
         if ischar(varargin{2})
         %if one argument is numeric and one argument is a char do this: 
         numarg = varargin{1};
@@ -100,7 +101,12 @@ elseif nargin == 2
         A = table.AtomicWeight(R);
         [mass, be] = massformula(A,Z);
         
-        %display corresponding cell that is in specified column and display mass
+        %check that 'chararg' is one of the column titles
+        if ~strcmp(chararg, table.Properties.VariableNames) %Thank you https://www.mathworks.com/matlabcentral/answers/3481-equal-cell for 'strcmp'
+            error('Please enter the title of a column in table')
+        end
+        
+        %display mass and corresponding cell that is in specified column 
         disp("Mass = "+mass+" MeV")
         disp(table(Z,chararg))
         end    
