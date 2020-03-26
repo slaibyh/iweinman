@@ -22,9 +22,9 @@ if nargin == 0
         A = table.AtomicWeight;
         Z = table.AtomicNumber;
         awm = A*931.5; %mass calculated from atomic weight
-       [mass, be, BEPN] = massformula(A,Z);
+       [mass,~, BEPN] = massformula(A,Z);
        
-       plot1 = figure(1);
+       figure(1);
        hold on%We need a hold becuase we are doing 2 plots in 1
        plot(Z,mass, 'k-')%black line
        plot(Z,awm, 'ro')%red circles
@@ -34,82 +34,79 @@ if nargin == 0
        legend('Line = Semi-Empirical Formula Mass vs. Atomic Number', 'Markers = Atomic Weight Mass vs. Atomic Number')
        hold off
        
-       plot2 = figure(2);
-       plot(Z,BEPN)%why are there two lines?
+       figure(2);
+       plot(Z,BEPN(:,end))
        title('Binding Energy per Nucleon vs. Atomic Number')
        xlabel('Atomic Number')
        ylabel('BEPN (MeV)')
        
 elseif nargin == 1
-        singlearg = varargin{1};
-        if ~isnumeric(singlearg)%check that the input is numeric
+        if ~isnumeric(varargin{1})%check that the input is numeric
             error('Please input a numeric value for Atomic Number')
         end
-        if singlearg <= 0 || singlearg > 118%check that the input is between 1 and 118
+        if varargin{1} <= 0 || varargin{1} > 118%check that the input is between 1 and 118
             error('Please input a value between 1 and 118')
         end
-        Z = singlearg;
-        %Define a variable for the row of the input
-        R = find(table.AtomicNumber==Z);
-        %Define a variable for the Atomic Weight in the row of the input
-        A = table.AtomicWeight(R);
+        
+        %Define variables for A and Z
+        Z = varargin{1};
+        A = table.AtomicWeight(table.AtomicNumber==Z);
         
         %Calculate mass using 'massformula'
         [mass] = massformula(A,Z);
         
-        %Create a new table that is just the row of the input
-        newtable = table(Z,:);
+        %Display mass, the specified row, and create an output argument
+        disp("Mass = "+mass+" MeV");
+        disp(table(Z,:));
+        varargout{1} = {mass,table(Z,:)};
         
-        %Display the mass and 'newtable'
-        disp("Mass = " +mass+ " MeV");
-        disp(newtable);
-        
-elseif nargin == 2 
+elseif nargin == 2
+        %if both arguments are numeric do this:
         if isnumeric(varargin{2})
-       %if both arguments are numeric do this:
-        arg1 = varargin{1};
-        arg2 = varargin{2};
-        if ~isnumeric(arg1)%Check that the first input is numeric
+      
+        %Assign variables for A and Z
+        Z = varargin{1};
+        A = varargin{2};
+        if ~isnumeric(Z)%Check that the first input is numeric
             error('Please input a numeric value for atomic number')
         end
-        if ~isnumeric(arg2)%Check that the second input is numeric
+        if ~isnumeric(A)%Check that the second input is numeric
             error('Please input a numeric value for number of nucleons')
         end
        
-        %Define variables for A and Z
-        Z = arg1;
-        A = arg2;
-   
         %Calculate mass and determine stability of the isotope
-        [mass, be] = massformula(A,Z);
-        disp("Mass = "+mass+" MeV")
+        [mass,be] = massformula(A,Z);
         if be <= 0
-           disp('Isotope is unstable :(')
+           stability = "Isotope is unstable :(";
         else 
-           disp('Isotope is stable :)')
-        end
+           stability = "Isotope is stable :)";
         end
         
-        if ischar(varargin{2})
-        %if one argument is numeric and one argument is a char do this: 
-        numarg = varargin{1};
-        chararg = varargin{2};
-  
+        %Display mass and assign output arguments for mass and stability
+        disp("Mass = "+mass+" MeV")
+        varargout{1} = {mass,stability};
+        end
+        
+        %if one argument is numeric and one argument is a char do this:
+        if ischar(varargin{2}) 
+       
         %calculate mass
-        Z = numarg;
-        R = find(table.AtomicNumber==Z);
-        A = table.AtomicWeight(R);
-        [mass, be] = massformula(A,Z);
+        Z = varargin{1};
+        A = table.AtomicWeight(table.AtomicNumber==Z);
+        [mass,~] = massformula(A,Z);
         
-        %check that 'chararg' is one of the column titles
-        if ~strcmp(chararg, table.Properties.VariableNames) %Thank you https://www.mathworks.com/matlabcentral/answers/3481-equal-cell for 'strcmp'
+        %check that the second argument is one of the column titles
+        if ~strcmp(varargin{2}, table.Properties.VariableNames) %Thank you https://www.mathworks.com/matlabcentral/answers/3481-equal-cell for 'strcmp'
             error('Please enter the title of a column in table')
         end
         
         %display mass and corresponding cell that is in specified column 
         disp("Mass = "+mass+" MeV")
-        disp(table(Z,chararg))
-        end    
+        disp(table(Z,varargin{2}))
+        
+        %Assign mass and specified cell to an output argument
+        varargout{1} = {mass,table(Z,varargin{2})};
+        end  
 end
 end
 
