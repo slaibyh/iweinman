@@ -25,7 +25,7 @@ def projectile(v=15,ang=30,h=0,g=9.8):
     t=np.arange(0,tf,0.01)
     d=(vx*t)
     he=h+(vy*t-(.5*g*t**2))
-    p.show(graph(d,he))
+    graph(d,he)
     
     return r,tf,hmax  
 
@@ -35,6 +35,7 @@ def graph(x,y):
     p.xlabel('Distance (meters)')
     p.ylabel('Height (meters)')
     p.title('Height vs. Dsitance')
+    p.show()
     return
 
 
