@@ -23,3 +23,6 @@ I think that you ironed out the issues in the projectile function, now you just 
 
 ## Mar 23
 I looked over proble 7a and it seems that you are getting correct answers. One thing that you should do, though, is include `show()` statement in your graph function, in jupyter notebooks, you get a graph, but in spyder you do not, including a show() makes sure that it appears in both. I took a quick look through your `ptable` function, and while it runs and seems to calculate values correct, You still have a problem with the binding energy graph looks like two graphs, but I don't know what the second line is. Also, you have no output arguments assigned, you output the mass, BUT it is only printed to the command window and is not stored as an output argument.
+
+## Mar 26
+I went back to motion.py and when I ran projectile() a graph did show up in the command window. When I added a p.show() to my graph function both a regular graph and an empty one display in the command window. For ptable I fixed the binding energy graph and I did assign some output arguments. I had to assign both outputs to one argument, though. For example in line 61 of ptable.m varargout{1} is equal to the mass and the row of the element that was input. I had to do this because if I had varargout{1} as the mass and varargout{2} as the row, the function would only output varargout{1}. 
