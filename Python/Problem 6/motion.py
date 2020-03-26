@@ -26,6 +26,7 @@ def projectile(v=15,ang=30,h=0,g=9.8):
     d=(vx*t)
     he=h+(vy*t-(.5*g*t**2))
     graph(d,he)
+    p.show(graph)
     
     return r,tf,hmax  
 
