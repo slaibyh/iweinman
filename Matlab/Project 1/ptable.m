@@ -40,6 +40,9 @@ if nargin == 0
        xlabel('Atomic Number')
        ylabel('BEPN (MeV)')
        
+       %Assign the two graphs to an output argument
+       varargout{1} = {figure(1),figure(2)};
+       
 elseif nargin == 1
         if ~isnumeric(varargin{1})%check that the input is numeric
             error('Please input a numeric value for Atomic Number')
