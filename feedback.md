@@ -26,3 +26,6 @@ I looked over proble 7a and it seems that you are getting correct answers. One t
 
 ## Mar 26
 I went back to motion.py and when I ran projectile() a graph did show up in the command window. When I added a p.show() to my graph function both a regular graph and an empty one display in the command window. For ptable I fixed the binding energy graph and I did assign some output arguments. I had to assign both outputs to one argument, though. For example in line 61 of ptable.m varargout{1} is equal to the mass and the row of the element that was input. I had to do this because if I had varargout{1} as the mass and varargout{2} as the row, the function would only output varargout{1}. 
+
+## Mar 29
+Problem 7a is pretty much done. I could not figure out how to display the years without their indecies in questions 1 and 2. I looked into removing the index entirely from the dataframes as well as removing the index in the function so it is not output with the years, but to no avail. Should the output be just the years or is it okay if their indecies are there? Also, I am completely stumped by the overlap part of the problem. 
