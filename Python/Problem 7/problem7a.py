@@ -33,8 +33,8 @@ def relategraph():
     p.xlabel("Highest Carbon Emission Years")
     p.title("Relation?")
     p.show()
+    print('There does not seem to be a relationship based on the graph')
     return
-#There does not seem to be a relationship based on the graph
 
 #Function to find the 20 hottest months in 'GlobTemp'
 def toptwenty():
