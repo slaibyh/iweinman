@@ -60,10 +60,3 @@ def excel():
     records.to_excel(writer,sheet_name='records')
     writer.save()
     return 
-
-jnefn2ofinepfi2epfinepivun2epviunpviunwevinwevpiwunevinevpiwnvpiwenvpiwenv
-
-pwoenvwpeijnvwivbnwfjnv'
-
-w;edvnwpejnvwvjbwibjvnwev'wejnvwpejnv
-;ewjnvwjnvwoevn
