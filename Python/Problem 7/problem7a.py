@@ -2,14 +2,13 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as p
 
-Years = np.arange(1850,2018)
-
 #Import 'GlobalTempbyMonth.txt' and 'climate.txt'
 GlobTemp = pd.DataFrame(pd.read_table('GlobalTempbyMonth.txt',sep="   ",header = None,usecols = [0, 1],names = ['Month','AvgTemp'],engine = 'python'))
 climate = pd.DataFrame(pd.read_table('climate.txt',sep=','))
 
 #Add a column containing the amount of carbon added every year and a column containing the years (1850-2017)
 climate['YearlyEmissions'] = climate.ffai+climate.luce
+Years = np.arange(1850,2018)
 climate['Year'] = Years
 
 #1 and 2) This function returns the ten hottest years or the ten years with the most carbon emissions based on the input
@@ -61,3 +60,10 @@ def excel():
     records.to_excel(writer,sheet_name='records')
     writer.save()
     return 
+
+jnefn2ofinepfi2epfinepivun2epviunpviunwevinwevpiwunevinevpiwnvpiwenvpiwenv
+
+pwoenvwpeijnvwivbnwfjnv'
+
+w;edvnwpejnvwvjbwibjvnwev'wejnvwpejnv
+;ewjnvwjnvwoevn
