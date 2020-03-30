@@ -1,6 +1,5 @@
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as p
 
 #Import 'GlobalTempbyMonth.txt' and 'climate.txt'
 GlobTemp = pd.DataFrame(pd.read_table('GlobalTempbyMonth.txt',sep="   ",header = None,usecols = [0, 1],names = ['Month','AvgTemp'],engine = 'python'))
@@ -26,14 +25,12 @@ def topten(str):
     return topten
 
 #3) Is there a relationship between the ten hottest years and the ten years with the most carbon emissions?
-def relategraph():
-    p.plot(topten('Carbon'),topten('Heat'))
-    p.ylabel("Hottest Years")
-    p.xlabel("Highest Carbon Emission Years")
-    p.title("Relation?")
-    p.show()
-    print('There does not seem to be a relationship based on the graph')
-    return
+def relate():
+    tenh = pd.DataFrame(topten('Heat'))
+    tenc = pd.DataFrame(topten('Carbon'))
+    both = pd.merge(tenh,tenc)
+    relation = print("The common years between the hottest and the most carbon emitted are: ",both)
+    return relation
 
 #Function to find the 20 hottest months in 'GlobTemp'
 def toptwenty():
@@ -43,9 +40,9 @@ def toptwenty():
     return toptwenty
 
 #Is there any overlap between the hottest months and the hottest years?
-def overlap(y=topten('Heat'),m=toptwenty()):
-    o = np.equal(y,m)
-    return o
+def overlap():
+
+    return 
 
 #Create a data frame of years, sorted by global average temperature, highest to lowest
 sortclimate = climate.sort_values('AvgTemp',ascending=False)
@@ -60,3 +57,7 @@ def excel():
     records.to_excel(writer,sheet_name='records')
     writer.save()
     return 
+
+tenh = pd.DataFrame(topten('Heat'))
+twentyh = pd.DataFrame(toptwenty())
+#sheesh = pd.merge(tenh,twentyh)
