@@ -60,4 +60,3 @@ def excel():
 
 tenh = pd.DataFrame(topten('Heat'))
 twentyh = pd.DataFrame(toptwenty())
-#sheesh = pd.merge(tenh,twentyh)
