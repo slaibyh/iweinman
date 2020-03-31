@@ -73,9 +73,6 @@ elseif nargin == 2
         if ~isnumeric(Z)%Check that the first input is numeric
             error('Please input a numeric value for atomic number')
         end
-        if ~isnumeric(A)%Check that the second input is numeric
-            error('Please input a numeric value for number of nucleons')
-        end
        
         %Calculate mass and determine stability of the isotope
         [mass,be] = massformula(A,Z);
