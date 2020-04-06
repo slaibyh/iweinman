@@ -7,8 +7,8 @@ import matplotlib.pyplot as plt
 #Define coefficients
 C = 0.5 #drag coeffeicient of a smooth sphere https://www.grc.nasa.gov/WWW/K-12/airplane/balldrag.html
 rho = 1.225 #density of air from Google
-A = .2 #cross-sectional area of projectile
-m = 2 #mass of projectile
+A = .2 #cross-sectional area of projectile in meters
+m = 2 #mass of projectile in kg
 g = 9.81 #gravitational constant
 
 #Both position functions combine the coeffeicients in the same way
