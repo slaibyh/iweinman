@@ -71,7 +71,7 @@ def orbitalv(T):
 
 #function that makes a dotted ellipse of the sattelite's orbit
 #def satorbit(T):
-
+#r = a/1+ecos(theta)
    # return ellipse
 
 #function that creates a new window
@@ -82,3 +82,5 @@ def window():
     win.geometry('700x700')
     win.mainloop()
     return win
+
+
