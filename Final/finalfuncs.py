@@ -1,6 +1,8 @@
 #Final project functions program
 import numpy as np
 import tkinter as tk
+import matplotlib.pyplot as p
+from PIL import ImageTk, Image
 
 G = 6.67*10**(-11)#gravitational constant
 M = 5.98*10**(24)#mass of Earth
@@ -70,8 +72,9 @@ def orbitalv(T):
     return ovelocity
 
 #function that makes a dotted ellipse of the sattelite's orbit
-#def satorbit(T):
-#r = a/1+ecos(theta)
+#r = a/1+e*np.cos(theta);
+#def satorbit():
+  #  ellipse = 
    # return ellipse
 
 #function that creates a new window
@@ -80,7 +83,11 @@ def window():
     win.title("Satellites")
     win['bg'] = 'black'
     win.geometry('700x700')
+    button_quit = tk.Button(win, text="Close", command=win.quit)
+    button_quit.pack(side="bottom")
+    img = ImageTk.PhotoImage(Image.open("Earth.jpg"))
+    label = tk.Label(image=img)
+    label.pack(side="bottom")
     win.mainloop()
     return win
-
 
