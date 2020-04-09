@@ -9,55 +9,57 @@ M = 5.98*10**(24)#mass of Earth
 R = 6.371*10**(6)#radius of Earth
 
 #function for all unit conversions
-def distconvert(x,unit,newunit):
+def convert(x,unit,newunit):
     if unit == 'm' and newunit == 'km':
         out = x/1000
-    if unit == 'm' and newunit == 'mi':
+    elif unit == 'm' and newunit == 'mi':
         out = x/1609
-    if unit == 'm' and newunit == 'ft':  
+    elif unit == 'm' and newunit == 'ft':  
         out = x*3.281
-    if unit == 'km' and newunit == 'm':
+    elif unit == 'km' and newunit == 'm':
         out = x*1000
-    if unit == 'km' and newunit == 'mi':
+    elif unit == 'km' and newunit == 'mi':
         out = x/1.609
-    if unit == 'km' and newunit == 'ft':
+    elif unit == 'km' and newunit == 'ft':
         out = x*3281
-    if unit == 'mi' and newunit == 'm':
+    elif unit == 'mi' and newunit == 'm':
         out = x*1609
-    if unit == 'mi' and newunit == 'km':
+    elif unit == 'mi' and newunit == 'km':
         out = x*1.609
-    if unit == 'mi' and newunit == 'ft':
+    elif unit == 'mi' and newunit == 'ft':
         out = x*5280
-    if unit == 'ft' and newunit == 'm':
+    elif unit == 'ft' and newunit == 'm':
         out = x/3.281
-    if unit == 'ft' and newunit == 'km':
+    elif unit == 'ft' and newunit == 'km':
         out = x/3281
-    if unit == 'ft' and newunit == 'mi':
+    elif unit == 'ft' and newunit == 'mi':
         out = x/5280  
-    if unit == 'secs' and newunit == 'mins':
+    elif unit == 'secs' and newunit == 'mins':
         out = x/60
-    if unit == 'secs' and newunit == 'hrs':
+    elif unit == 'secs' and newunit == 'hrs':
         out = x/3600   
-    if unit == 'secs' and newunit == 'days':
+    elif unit == 'secs' and newunit == 'days':
         out = x/86400
-    if unit == 'mins' and newunit == 'secs':
+    elif unit == 'mins' and newunit == 'secs':
         out = x*60
-    if unit == 'mins' and newunit == 'hrs':
+    elif unit == 'mins' and newunit == 'hrs':
         out = x/60
-    if unit == 'mins' and newunit == 'days':
+    elif unit == 'mins' and newunit == 'days':
         out = x/1440
-    if unit == 'hrs' and newunit == 'secs':
+    elif unit == 'hrs' and newunit == 'secs':
         out = x/3600
-    if unit == 'hrs' and newunit == 'mins':
+    elif unit == 'hrs' and newunit == 'mins':
         out = x/60
-    if unit == 'hrs' and newunit == 'days':
+    elif unit == 'hrs' and newunit == 'days':
         out = x/24
-    if unit == 'days' and newunit == 'secs':
+    elif unit == 'days' and newunit == 'secs':
         out = x*86400
-    if unit == 'days' and newunit == 'mins':
+    elif unit == 'days' and newunit == 'mins':
         out = x*1440
-    if unit == 'days' and newunit == 'hrs':
-        out = x*24    
+    elif unit == 'days' and newunit == 'hrs':
+        out = x*24
+    else:
+        print('Please input proper units')
     return out
 
 #function for orbital radius
@@ -79,15 +81,38 @@ def orbitalv(T):
 
 #function that creates a new window
 def window():
+    #creating the window and designing it
     win = tk.Tk()
     win.title("Satellites")
     win['bg'] = 'black'
     win.geometry('700x700')
-    button_quit = tk.Button(win, text="Close", command=win.quit)
-    button_quit.pack(side="bottom")
+    #Close button
+    close = tk.Button(win, text="Close", command=win.quit)
+    close.pack(side="bottom")
+    #importing the Earth
     img = ImageTk.PhotoImage(Image.open("Earth.jpg"))
-    label = tk.Label(image=img)
-    label.pack(side="bottom")
+    Earth = tk.Label(image=img)
+    Earth['bg'] = 'black'
+    Earth.pack(side="bottom")
+    #Left Drop-Down Box
+    menul = tk.StringVar()
+    options = ["Orbital Period","Orbital Velocity"]
+    menul.set(options[0])
+    dropl = tk.OptionMenu(win,menul,*options)
+    dropl['bg'] = 'black'
+    dropl.pack(side="left")
+    #Right Drop-Down Box
+    if dropl == options[0]:
+        menur = tk.StringVar()
+        perunits = ["Seconds","Minutes","Hours","Days"]
+        menur.set(perunits[1])
+        dropr = tk.OptionMenu(win,menur,*perunits)
+        dropr.pack(side="right")
+    else:
+        menur = tk.StringVar()
+        velunits = ["meter/second","meter/minute","meter/hour","meter/day","kilometers/second","kilometers/minute","kilometers/hour","kilometers/day","feet/second","feet/minute","feet/hour","feet/day","miles/second","miles/minutes","miles/hour","miles/day"]
+        menur.set(velunits[5])
+        dropr = tk.OptionMenu(win,menur,*velunits)
+        dropr.pack(side="right")
     win.mainloop()
     return win
-
