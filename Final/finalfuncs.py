@@ -86,7 +86,7 @@ def window():
     win.title("Satellites")
     win['bg'] = 'black'
     win.geometry('700x700')
-    #Close button
+    #Close button. For some reason this causes the window to crash
     close = tk.Button(win, text="Close", command=win.quit)
     close.pack(side="bottom")
     #importing the Earth
