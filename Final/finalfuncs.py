@@ -73,46 +73,9 @@ def orbitalv(T):
     ovelocity = (G*M/orbitalr(T))**1/2
     return ovelocity
 
-#function that makes a dotted ellipse of the sattelite's orbit
+#function that animates the satellite and draws a dotted ellipse of the sattelite's orbit
 #r = a/1+e*np.cos(theta);
-#def satorbit():
-  #  ellipse = 
-   # return ellipse
-
-#function that creates a new window
-def window():
-    #creating the window and designing it
-    win = tk.Tk()
-    win.title("Satellites")
-    win['bg'] = 'black'
-    win.geometry('700x700')
-    #Close button. For some reason this causes the window to crash
-    close = tk.Button(win, text="Close", command=win.quit)
-    close.pack(side="bottom")
-    #importing the Earth
-    img = ImageTk.PhotoImage(Image.open("Earth.jpg"))
-    Earth = tk.Label(image=img)
-    Earth['bg'] = 'black'
-    Earth.pack(side="bottom")
-    #Left Drop-Down Box
-    menul = tk.StringVar()
-    options = ["Orbital Period","Orbital Velocity"]
-    menul.set(options[0])
-    dropl = tk.OptionMenu(win,menul,*options)
-    dropl['bg'] = 'black'
-    dropl.pack(side="left")
-    #Right Drop-Down Box
-    if dropl == options[0]:
-        menur = tk.StringVar()
-        perunits = ["Seconds","Minutes","Hours","Days"]
-        menur.set(perunits[1])
-        dropr = tk.OptionMenu(win,menur,*perunits)
-        dropr.pack(side="right")
-    else:
-        menur = tk.StringVar()
-        velunits = ["meter/second","meter/minute","meter/hour","meter/day","kilometers/second","kilometers/minute","kilometers/hour","kilometers/day","feet/second","feet/minute","feet/hour","feet/day","miles/second","miles/minutes","miles/hour","miles/day"]
-        menur.set(velunits[5])
-        dropr = tk.OptionMenu(win,menur,*velunits)
-        dropr.pack(side="right")
-    win.mainloop()
-    return win
+#def orbit():
+   # return
+   
+#right drop down box
